@@ -9,16 +9,16 @@ install: true
 env: GO111MODULE=on
 script:
   - go build -mod vendor
-  - touch redis-exporter_${TRAVIS_TAG}_linux-amd64.tar.gz
-  - mkdir redis-exporter_${TRAVIS_TAG}_linux-amd64
-  - mv redis-exporter redis-exporter_${TRAVIS_TAG}_linux-amd64/
-  - tar -czf redis-exporter_${TRAVIS_TAG}_linux-amd64.tar.gz --exclude='./.*' --exclude=redis-exporter_${TRAVIS_TAG}_linux-amd64.tar.gz redis-exporter_${TRAVIS_TAG}_linux-amd64
+  - touch redis_exporter_${TRAVIS_TAG}_linux-amd64.tar.gz
+  - mkdir redis_exporter_${TRAVIS_TAG}_linux-amd64
+  - mv redis_exporter redis_exporter_${TRAVIS_TAG}_linux-amd64/
+  - tar -czf redis_exporter_${TRAVIS_TAG}_linux-amd64.tar.gz --exclude='./.*' --exclude=redis_exporter_${TRAVIS_TAG}_linux-amd64.tar.gz redis_exporter_${TRAVIS_TAG}_linux-amd64
 git:
   depth: 1
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  file: "redis-exporter_${TRAVIS_TAG}_linux-amd64.tar.gz"
+  file: "redis_exporter_${TRAVIS_TAG}_linux-amd64.tar.gz"
   skip_cleanup: true
   on:
     tags: true
